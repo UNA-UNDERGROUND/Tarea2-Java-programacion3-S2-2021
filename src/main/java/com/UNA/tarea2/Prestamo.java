@@ -57,27 +57,13 @@ public class Prestamo {
 
 	@Override
 	public String toString() {
-		String prestamo = String.format("""
-				Préstamo
-				Monto  :%.2f
-				Plazo  :%d
-				Tasa(%%):%.2f
-				Cuota  :%.2f
-				""", getMonto(), getPlazo(), getTasa(), getCuota());
-		StringBuilder s = new StringBuilder(prestamo);
-
-		if (mensualidades.size() > 0) {
-			s.append("""
-
-					Mensualidades.
-					| No |   Saldo  | Interés |   Amort  |
-					""");
-			for (Mensualidad m : mensualidades) {
-				s.append(m);
-			}
-		}
-
-		return s.toString();
+		String prestamo = String.format(
+			"Monto: %.0f  Tasa: %.0f  Plazo: %d  Cuota: %.0f",
+			getMonto(),
+			getTasa() * 100,
+			getPlazo(), 
+			getCuota());
+		return prestamo;
 	}
 
 }
